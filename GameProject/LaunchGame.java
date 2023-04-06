@@ -1,5 +1,6 @@
 package GameProject;
 import java.util.*;
+import javax.lang.model.util.ElementScanner6;
 
 class Guesser
 {
@@ -52,10 +53,27 @@ class Umpire
     void compare()
     {
         if (numFromGuesser == numFromPlayer1) {
-            System.out.println("Player1 won the game");
+            
+            if (numFromGuesser==numFromPlayer2 && numFromGuesser==numFromPlayer3) {
+                System.out.println("Sab ney sahi answer diya! Sab winner hain bhai");
+            }
+            else if (numFromGuesser == numFromPlayer2) {
+                System.out.println("Player1 & Player2 won");
+            }
+            else if (numFromGuesser == numFromPlayer3) {
+                System.out.println("Player1 & Player3 won");
+            }
+            else {
+                System.out.println("Player1 won the game");
+            }
         }
         else if (numFromGuesser == numFromPlayer2) {
-            System.out.println("Player2 won the game");
+            if (numFromGuesser == numFromPlayer3) {
+                System.out.println("Player2 & Player3 won");
+            }
+            else {
+                System.out.println("Player2 won the game");
+            }
         }
         else if (numFromGuesser == numFromPlayer3) {
             System.out.println("Player3 won the game");
@@ -69,6 +87,10 @@ class Umpire
 
 public class LaunchGame {
     public static void main(String[] args) {
-        
+        System.out.println("Game Started");
+        Umpire u = new Umpire();
+        u.collectNumFromGuesser();
+        u.collectNumFromPlayer();
+        u.compare();
     }
 }
